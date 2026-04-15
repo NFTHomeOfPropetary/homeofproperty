@@ -1,47 +1,100 @@
+const properties = [
+  {
+    title: "Casa en Las Palmas",
+    desc: "Moderna, 3 habitaciones, vista al mar",
+    price: "320.000€",
+    city: "Gran Canaria",
+  },
+  {
+    title: "Apartamento en Tenerife",
+    desc: "Centro ciudad, ideal inversión",
+    price: "210.000€",
+    city: "Tenerife",
+  },
+  {
+    title: "Villa de lujo",
+    desc: "Piscina privada, jardín y vistas",
+    price: "850.000€",
+    city: "Gran Canaria",
+  },
+];
+
 export default function Home() {
   return (
-    <main style={{ padding: "60px", fontFamily: "Arial", background: "#f5f5f5", minHeight: "100vh" }}>
+    <main style={{ fontFamily: "Arial", background: "#f5f7fa", minHeight: "100vh" }}>
       
-      <h1 style={{ fontSize: "42px", fontWeight: "bold" }}>
-        🏡 Home of Property
-      </h1>
+      {/* HERO */}
+      <section style={{ padding: "90px 40px", textAlign: "center" }}>
+        <h1 style={{ fontSize: "54px", fontWeight: "bold" }}>
+          🏡 Home of Property
+        </h1>
 
-      <p style={{ fontSize: "18px", marginTop: "20px", maxWidth: "600px" }}>
-        Encuentra las mejores propiedades para vivir o invertir en Canarias y más allá.
-      </p>
+        <p style={{ fontSize: "18px", maxWidth: "700px", margin: "20px auto", color: "#555" }}>
+          Plataforma moderna para encontrar, comprar e invertir en propiedades en Canarias.
+        </p>
 
-      <div style={{ marginTop: "40px", display: "flex", gap: "15px", flexWrap: "wrap" }}>
+        <a
+          href="#properties"
+          style={{
+            padding: "14px 26px",
+            background: "#000",
+            color: "#fff",
+            borderRadius: "10px",
+            textDecoration: "none",
+            display: "inline-block",
+            marginTop: "20px"
+          }}
+        >
+          Ver propiedades
+        </a>
+      </section>
+
+      {/* PROPERTIES */}
+      <section id="properties" style={{ padding: "40px", maxWidth: "1100px", margin: "0 auto" }}>
         
-        <div style={{ background: "white", padding: "20px", borderRadius: "10px", width: "250px" }}>
-          <h3>Casa en Las Palmas</h3>
-          <p>Moderna, 3 habitaciones, vista al mar.</p>
+        <h2 style={{ fontSize: "32px", marginBottom: "30px" }}>
+          Propiedades disponibles
+        </h2>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "20px" }}>
+          
+          {properties.map((p, i) => (
+            <div key={i} style={{
+              background: "white",
+              padding: "20px",
+              borderRadius: "14px",
+              boxShadow: "0 4px 14px rgba(0,0,0,0.08)"
+            }}>
+              <h3>{p.title}</h3>
+              <p style={{ color: "#666" }}>{p.desc}</p>
+              <p style={{ fontWeight: "bold", marginTop: "10px" }}>{p.price}</p>
+              <p style={{ fontSize: "12px", color: "#999" }}>{p.city}</p>
+
+              <a
+                href="https://wa.me/34600000000"
+                target="_blank"
+                style={{
+                  display: "inline-block",
+                  marginTop: "15px",
+                  padding: "10px 14px",
+                  background: "#25D366",
+                  color: "white",
+                  borderRadius: "8px",
+                  textDecoration: "none"
+                }}
+              >
+                Contactar por WhatsApp
+              </a>
+            </div>
+          ))}
+
         </div>
+      </section>
 
-        <div style={{ background: "white", padding: "20px", borderRadius: "10px", width: "250px" }}>
-          <h3>Apartamento en Tenerife</h3>
-          <p>Centro ciudad, ideal inversión.</p>
-        </div>
-
-        <div style={{ background: "white", padding: "20px", borderRadius: "10px", width: "250px" }}>
-          <h3>Villa en Gran Canaria</h3>
-          <p>Lujo, piscina privada y jardín.</p>
-        </div>
-
-      </div>
-
-      <button
-        style={{
-          marginTop: "40px",
-          padding: "14px 24px",
-          background: "black",
-          color: "white",
-          border: "none",
-          borderRadius: "8px",
-          cursor: "pointer"
-        }}
-      >
-        Ver todas las propiedades
-      </button>
+      {/* FOOTER */}
+      <footer style={{ textAlign: "center", padding: "40px", color: "#777" }}>
+        © {new Date().getFullYear()} Home of Property
+      </footer>
 
     </main>
   );
